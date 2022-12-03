@@ -1,0 +1,17 @@
+image:
+  file: .gitpod.dockerfile
+
+vscode:
+  extensions:
+    - betterthantomorrow.calva
+    - mhutchie.git-graph
+
+tasks:
+  - name: Prepare deps
+    init: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.7"}}}' -P
+  - name: INSTRUCTIONS
+    command: code doc/INSTRUCTIONS.md
+
+github:
+  prebuilds:
+    main: true
