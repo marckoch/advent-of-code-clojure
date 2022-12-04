@@ -1,5 +1,6 @@
 (ns adventofcode.2022.day03.core
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.java.io :as io]
+            [clojure.set :as set]))
 
 (def sample "resources/2022/day03_sample.txt")
 (def input "resources/2022/day03_input.txt")
@@ -16,7 +17,7 @@
   [strings]
   (->> strings
        (map #(set %))
-       (apply clojure.set/intersection)
+       (apply set/intersection)
        first))
 
 (defn priority-of
