@@ -3,7 +3,7 @@
 
 (def filename "resources/2022/day01_input.txt")
 
-(defn last-index 
+(defn last-index
   "get last index of vec v"
   [v]
   (dec (count v)))
@@ -21,18 +21,24 @@
     (update-last-element vec (Integer/parseInt x))))
 
 ; part 1
-(->> (io/reader filename)
-     line-seq
-     (reduce grow-vec [0])
-     sort
-     reverse
-     first)
+(defn part1 []
+  (->> (io/reader filename)
+       line-seq
+       (reduce grow-vec [0])
+       sort
+       reverse
+       first))
 
 ; part 2
-(->> (io/reader filename)
-     line-seq
-     (reduce grow-vec [0])
-     sort
-     reverse
-     (take 3)
-     (reduce +))
+(defn part2 []
+  (->> (io/reader filename)
+       line-seq
+       (reduce grow-vec [0])
+       sort
+       reverse
+       (take 3)
+       (reduce +)))
+
+(part1)
+
+(part2)

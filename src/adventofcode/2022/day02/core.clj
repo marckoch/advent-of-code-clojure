@@ -1,4 +1,4 @@
-(ns adventofcode.2022.day02.core 
+(ns adventofcode.2022.day02.core
   (:require [clojure.string :as str]
             [clojure.java.io :as io]))
 
@@ -26,18 +26,19 @@
                  [0 3 6]
                  [6 0 3]])
 
-(defn calc-score-part1 
+(defn calc-score-part1
   "calculate the score for part1"
   [[opponents-move my-move]]
   (+ (inc my-move)
      ((win-matrix opponents-move) my-move)))
 
 ; part 1
-(->> (io/reader filename)
-     line-seq
-     (map #(to-indices %))
-     (map #(calc-score-part1 %))
-     (reduce +))
+(defn part1 []
+  (->> (io/reader filename)
+       line-seq
+       (map #(to-indices %))
+       (map #(calc-score-part1 %))
+       (reduce +)))
 
 ;;;;;;;;;;; part 2
 
@@ -60,8 +61,13 @@
      (inc ((matrix-of-my-moves opponents-move) desired-result))))
 
 ; part 2
-(->> (io/reader filename)
-     line-seq
-     (map #(to-indices %))
-     (map #(calc-score-part2 %))
-     (reduce +))
+(defn part2 []
+  (->> (io/reader filename)
+       line-seq
+       (map #(to-indices %))
+       (map #(calc-score-part2 %))
+       (reduce +)))
+
+(part1)
+
+(part2)
